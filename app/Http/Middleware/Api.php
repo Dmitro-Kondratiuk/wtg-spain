@@ -9,18 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Api
 {
-    protected $except = [
-        '/login',
-        '/register'
-    ];
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response {
-
-        if (!auth('api')->check()) {
+        $check = auth('api')->check();
+        if (!$check) {
             return response()->json([
                 'error'     => 'Запрещено входить не авторизированому пользователю',
                 'needLogin' => true,

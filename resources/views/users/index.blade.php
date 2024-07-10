@@ -1,4 +1,5 @@
 @extends('layout.index')
+@extends('layout.header')
 @section('content')
     @vite('resources/css/app.css')
 <div class="container">

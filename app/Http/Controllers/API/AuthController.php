@@ -37,7 +37,7 @@ class AuthController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return response()->json('User successfully registered');
+        return response()->json('User successfully registered', 200);
     }
 
     public function returnWithToken($token) {

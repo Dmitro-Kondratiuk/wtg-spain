@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Страница логина</title>
-    <link rel="stylesheet" href="styles.css">
+@extends('layout.index')
+@section('content')
     @vite('resources/css/login.css')
-</head>
-<body>
 <div class="login-container">
-    <form class="login-form">
+    <form class="login-form" id="login-form">
         <h2>Вход</h2>
         <div class="form-group">
             <label for="email">Email</label>
@@ -19,11 +12,11 @@
             <label for="password">Пароль</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit">Войти</button>
+        <button type="submit" id="login">Войти</button>
         <div class="register-link">
             <p>Нет аккаунта? <a href="{{route('users.register')}}">Зарегистрироваться</a></p>
         </div>
     </form>
 </div>
-</body>
-</html>
+    @vite('resources/js/users/login.js')
+@endsection

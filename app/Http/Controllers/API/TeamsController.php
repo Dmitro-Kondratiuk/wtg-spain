@@ -18,7 +18,7 @@ class TeamsController extends Controller
             $team->save();
         }
         catch (\Exception $exception) {
-            return response()->json($exception);
+            return response()->json($exception,500);
         }
 
         return response()->json('Team created!');
@@ -34,7 +34,7 @@ class TeamsController extends Controller
                 'recordExists' => true,
             ];
 
-            return $this->createResponse($message);
+            return response()->json($message,400);
         }
 
         $addTeamUser = new TeamsUsers();
@@ -45,7 +45,7 @@ class TeamsController extends Controller
             $addTeamUser->save();
         }
         catch (\Exception $exception) {
-            return response()->json($exception);
+            return response()->json($exception,500);
         }
 
         return $this->createResponse('User added!');
@@ -59,7 +59,7 @@ class TeamsController extends Controller
             return $this->createResponse('User deleted!');
         }
 
-        return $this->createResponse('User or Team not found!');
+        return $this->createResponse('User or Team not found!',400);
     }
 
 }

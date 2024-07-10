@@ -30,21 +30,21 @@ class TasksController extends Controller
     public function updateTask(Request $request,$id) {
         $task = Tasks::find($id);
         if(!$task){
-            return response()->json('Task not found');
+            return response()->json('Task not found',400);
         }
         $task->update($request->all());
 
-        return response()->json(['Task updated successfully']);
+        return response()->json('Task updated successfully');
 
     }
     public function deleteTask($id) {
         $task = Tasks::find($id);
         if(!$task){
-            return response()->json('Task not found');
+            return response()->json('Task not found',400);
         }
         $task->delete();
 
-        return response()->json(['Task deleted successfully']);
+        return response()->json('Task deleted successfully');
     }
 
 }

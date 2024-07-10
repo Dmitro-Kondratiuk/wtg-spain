@@ -28,7 +28,7 @@ class CommentsController extends Controller
     public function deleteCommentTask($id) {
         $task = Comments::find($id);
         if(!$task){
-            return response()->json('Comment not found');
+            return response()->json('Comment not found',400);
         }
         $task->delete();
 
